@@ -2,6 +2,9 @@
 
 [stationaryorbit](https://github.com/zawa-ch/stationaryorbit) » graphics-core
 
+![Lisence](https://img.shields.io/github/license/zawa-ch/stationaryorbit.graphics-core)
+![Lines of code](https://img.shields.io/tokei/lines/github/zawa-ch/stationaryorbit.graphics-core)
+
 簡単なことを簡単に行うためのライブラリ
 
 ## 概要
