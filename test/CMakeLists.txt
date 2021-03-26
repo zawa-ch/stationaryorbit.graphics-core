@@ -20,6 +20,3 @@ add_executable(stationaryorbit.graphics-core.test
     core.cpp
     graphics-test.cpp
 )
-target_link_libraries(stationaryorbit.graphics-core.test
-    stationaryorbit.graphics-core
-)
