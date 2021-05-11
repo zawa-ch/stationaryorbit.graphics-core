@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/opacity
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -39,14 +39,14 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		[[nodiscard]] constexpr bool IsNormalized() const noexcept { return _value.IsNormalized(); }
 		[[nodiscard]] constexpr Opacity<Tp> Normalize() const noexcept { return Opacity<Tp>(_value.Normalize()); }
 
-		[[nodiscard]] constexpr Opacity<Tp> SaturateAdd(const Opacity<Tp>& other) const noexcept { return Opacity<Tp>(ArithmeticOperation::SaturateAdd(_value, other._value)); }
-		[[nodiscard]] constexpr Opacity<Tp> SaturateSubtract(const Opacity<Tp>& other) const noexcept { return Opacity<Tp>(ArithmeticOperation::SaturateSubtract(_value, other._value)); }
-		[[nodiscard]] constexpr Opacity<Tp> SaturateMultiply(const Opacity<Tp>& other) const noexcept { return Opacity<Tp>(ArithmeticOperation::SaturateMultiply(_value, other._value)); }
-		[[nodiscard]] constexpr Opacity<Tp> SaturateDivide(const Opacity<Tp>& other) const noexcept { return Opacity<Tp>(ArithmeticOperation::SaturateDivide(_value, other._value)); }
-		[[nodiscard]] constexpr Opacity<Tp> CheckedAdd(const Opacity<Tp>& other) const { return Opacity<Tp>(ArithmeticOperation::CheckedAdd(_value, other._value)); }
-		[[nodiscard]] constexpr Opacity<Tp> CheckedSubtract(const Opacity<Tp>& other) const { return Opacity<Tp>(ArithmeticOperation::CheckedSubtract(_value, other._value)); }
-		[[nodiscard]] constexpr Opacity<Tp> CheckedMultiply(const Opacity<Tp>& other) const { return Opacity<Tp>(ArithmeticOperation::CheckedMultiply(_value, other._value)); }
-		[[nodiscard]] constexpr Opacity<Tp> CheckedDivide(const Opacity<Tp>& other) const { return Opacity<Tp>(ArithmeticOperation::CheckedDivide(_value, other._value)); }
+		[[nodiscard]] constexpr Opacity<Tp> SaturateAdd(const Opacity<Tp>& other) const noexcept { return Opacity<Tp>(ArithmeticOperation::add_saturate(_value, other._value)); }
+		[[nodiscard]] constexpr Opacity<Tp> SaturateSubtract(const Opacity<Tp>& other) const noexcept { return Opacity<Tp>(ArithmeticOperation::subtract_saturate(_value, other._value)); }
+		[[nodiscard]] constexpr Opacity<Tp> SaturateMultiply(const Opacity<Tp>& other) const noexcept { return Opacity<Tp>(ArithmeticOperation::multiply_saturate(_value, other._value)); }
+		[[nodiscard]] constexpr Opacity<Tp> SaturateDivide(const Opacity<Tp>& other) const noexcept { return Opacity<Tp>(ArithmeticOperation::divide_saturate(_value, other._value)); }
+		[[nodiscard]] constexpr Opacity<Tp> CheckedAdd(const Opacity<Tp>& other) const { return Opacity<Tp>(ArithmeticOperation::add_checked(_value, other._value)); }
+		[[nodiscard]] constexpr Opacity<Tp> CheckedSubtract(const Opacity<Tp>& other) const { return Opacity<Tp>(ArithmeticOperation::subtract_checked(_value, other._value)); }
+		[[nodiscard]] constexpr Opacity<Tp> CheckedMultiply(const Opacity<Tp>& other) const { return Opacity<Tp>(ArithmeticOperation::multiply_checked(_value, other._value)); }
+		[[nodiscard]] constexpr Opacity<Tp> CheckedDivide(const Opacity<Tp>& other) const { return Opacity<Tp>(ArithmeticOperation::divide_checked(_value, other._value)); }
 		[[nodiscard]] constexpr bool Equals(const Opacity<Tp>& other) const noexcept { return _value.Equals(other._value); }
 		[[nodiscard]] constexpr bool Compare(const Opacity<Tp>& other) const noexcept { return _value.Compare(other._value); }
 

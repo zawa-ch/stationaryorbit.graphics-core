@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/channelvalue
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -65,10 +65,10 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] constexpr ChannelValue<Tp> operator+() const noexcept { return ChannelValue<Tp>(+_value); }
 		[[nodiscard]] constexpr ChannelValue<Tp> operator-() const noexcept { return ChannelValue<Tp>(-_value); }
-		[[nodiscard]] constexpr ChannelValue<Tp> operator+(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::SaturateAdd(_value, other._value); }
-		[[nodiscard]] constexpr ChannelValue<Tp> operator-(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::SaturateSubtract(_value, other._value); }
-		[[nodiscard]] constexpr ChannelValue<Tp> operator*(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::SaturateMultiply(_value, other._value); }
-		[[nodiscard]] constexpr ChannelValue<Tp> operator/(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::SaturateDivide(_value, other._value); }
+		[[nodiscard]] constexpr ChannelValue<Tp> operator+(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::add_saturate(_value, other._value); }
+		[[nodiscard]] constexpr ChannelValue<Tp> operator-(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::subtract_saturate(_value, other._value); }
+		[[nodiscard]] constexpr ChannelValue<Tp> operator*(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::multiply_saturate(_value, other._value); }
+		[[nodiscard]] constexpr ChannelValue<Tp> operator/(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::divide_saturate(_value, other._value); }
 		[[nodiscard]] constexpr ChannelValue<Tp> operator&(const ChannelValue<Tp>& other) const noexcept { return std::min({ _value, other._value }); }
 		[[nodiscard]] constexpr ChannelValue<Tp> operator|(const ChannelValue<Tp>& other) const noexcept { return std::max({ _value, other._value }); }
 		[[nodiscard]] constexpr ChannelValue<Tp> operator~() const noexcept { return Max()._value - _value; }
@@ -136,10 +136,10 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] constexpr ChannelValue<Tp> operator+() const noexcept { return ChannelValue<Tp>(+_value); }
 		[[nodiscard]] constexpr ChannelValue<Tp> operator-() const noexcept { return ChannelValue<Tp>(-_value); }
-		[[nodiscard]] constexpr ChannelValue<Tp> operator+(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::SaturateAdd(_value, other._value); }
-		[[nodiscard]] constexpr ChannelValue<Tp> operator-(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::SaturateSubtract(_value, other._value); }
-		[[nodiscard]] constexpr ChannelValue<Tp> operator*(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::SaturateMultiply(_value, other._value); }
-		[[nodiscard]] constexpr ChannelValue<Tp> operator/(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::SaturateDivide(_value, other._value); }
+		[[nodiscard]] constexpr ChannelValue<Tp> operator+(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::add_saturate(_value, other._value); }
+		[[nodiscard]] constexpr ChannelValue<Tp> operator-(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::subtract_saturate(_value, other._value); }
+		[[nodiscard]] constexpr ChannelValue<Tp> operator*(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::multiply_saturate(_value, other._value); }
+		[[nodiscard]] constexpr ChannelValue<Tp> operator/(const ChannelValue<Tp>& other) const noexcept { return ArithmeticOperation::divide_saturate(_value, other._value); }
 		[[nodiscard]] constexpr ChannelValue<Tp> operator&(const ChannelValue<Tp>& other) const noexcept { return std::min({ _value, other._value }); }
 		[[nodiscard]] constexpr ChannelValue<Tp> operator|(const ChannelValue<Tp>& other) const noexcept { return std::max({ _value, other._value }); }
 		[[nodiscard]] constexpr ChannelValue<Tp> operator~() const noexcept { return Max()._value - _value; }

@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/relativecolor
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -61,18 +61,18 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		///	このオブジェクトを正規化します。
 		[[nodiscard]] constexpr RelativeColor<Tp, N> Normalize() const noexcept { return Apply([](const auto& item)->ValueType { return item.Normalize(); }); }
 
-		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateAdd(const RelativeColor<Tp, N>& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::SaturateAdd(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateSubtract(const RelativeColor<Tp, N>& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::SaturateSubtract(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateMultiply(const RelativeColor<Tp, N>& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::SaturateMultiply(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateMultiply(const ValueType& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::SaturateMultiply(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateDivide(const RelativeColor<Tp, N>& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::SaturateDivide(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateDivide(const ValueType& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::SaturateDivide(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedAdd(const RelativeColor<Tp, N>& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::CheckedAdd(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedSubtract(const RelativeColor<Tp, N>& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::CheckedSubtract(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedMultiply(const RelativeColor<Tp, N>& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::CheckedMultiply(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedMultiply(const ValueType& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::CheckedMultiply(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedDivide(const RelativeColor<Tp, N>& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::CheckedDivide(item, value); }); }
-		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedDivide(const ValueType& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::CheckedDivide(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateAdd(const RelativeColor<Tp, N>& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::add_saturate(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateSubtract(const RelativeColor<Tp, N>& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::subtract_saturate(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateMultiply(const RelativeColor<Tp, N>& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::multiply_saturate(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateMultiply(const ValueType& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::multiply_saturate(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateDivide(const RelativeColor<Tp, N>& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::divide_saturate(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> SaturateDivide(const ValueType& other) const noexcept { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::divide_saturate(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedAdd(const RelativeColor<Tp, N>& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::add_checked(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedSubtract(const RelativeColor<Tp, N>& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::subtract_checked(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedMultiply(const RelativeColor<Tp, N>& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::multiply_checked(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedMultiply(const ValueType& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::multiply_checked(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedDivide(const RelativeColor<Tp, N>& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::divide_checked(item, value); }); }
+		[[nodiscard]] constexpr RelativeColor<Tp, N> CheckedDivide(const ValueType& other) const { return Merge(other, [](const auto& item, const auto& value)->ValueType { return ArithmeticOperation::divide_checked(item, value); }); }
 		[[nodiscard]] constexpr bool Equals(const RelativeColor<Tp, N>& other) const noexcept
 		{
 			auto ti = _value.cbegin();
