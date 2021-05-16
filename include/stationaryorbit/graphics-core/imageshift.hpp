@@ -70,7 +70,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		[[nodiscard]] bool IsReadableAbyss() const noexcept { return _data.IsReadableAbyss(); }
 
 		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _data.Size(); }
-		[[nodiscard]] DisplayRectangle Area() const noexcept { return _data.Area().Offset(args.Amount()); }
+		[[nodiscard]] DisplayRectangle Area() const noexcept { return _data.Area().offset(args.Amount()); }
 		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(index - args.Amount()); }
 
 		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[index - args.Amount()]; }

@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/imagealign
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -56,9 +56,9 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _data.Size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return DisplayRectangle(DisplayPoint(0, 0), _data.Size()); }
-		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(_data.Area().Origin() + index); }
+		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(_data.Area().origin() + index); }
 
-		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[_data.Area().Origin() + index]; }
+		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[_data.Area().origin() + index]; }
 	};
 
 	extern template class ImageAlign<CMY8_t>;

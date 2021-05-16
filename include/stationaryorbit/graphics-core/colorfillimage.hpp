@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/colorfillimage
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] bool IsReadableAbyss() const noexcept { return true; }
 
-		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return area.Size(); }
+		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return area.size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return area; }
 		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return color; }
 

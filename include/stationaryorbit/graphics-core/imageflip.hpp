@@ -47,7 +47,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		///	ソースとなる画像。
 		///	@param	args
 		///	この画像操作を行うために渡す引数。
-		ImageHorizonalFlip(const Image<Tcolor>& source, const ArgsType& args) : _data(source), _orig(1-_data.Area().Right(), _data.Area().Top()) {}
+		ImageHorizonalFlip(const Image<Tcolor>& source, const ArgsType& args) : _data(source), _orig(1-_data.Area().right(), _data.Area().top()) {}
 		///	オブジェクトを指定してこのオブジェクトを構築します。
 		///	@param	source
 		///	ソースとなる画像。
@@ -81,7 +81,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		///	ソースとなる画像。
 		///	@param	args
 		///	この画像操作を行うために渡す引数。
-		ImageVerticalFlip(const Image<Tcolor>& source, const ArgsType& args) : _data(source), _orig(_data.Area().Left(), 1-_data.Area().Bottom()) {}
+		ImageVerticalFlip(const Image<Tcolor>& source, const ArgsType& args) : _data(source), _orig(_data.Area().left(), 1-_data.Area().bottom()) {}
 		///	オブジェクトを指定してこのオブジェクトを構築します。
 		///	@param	source
 		///	ソースとなる画像。

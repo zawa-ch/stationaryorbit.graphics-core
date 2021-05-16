@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/colorblending
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -350,14 +350,14 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		[[nodiscard]] Blender& GetBlender() { return _bl; }
 
 		[[nodiscard]] bool IsReadableAbyss() const noexcept { return _back.IsReadableAbyss() && _source.IsReadableAbyss(); }
-		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.Size(); }
+		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return _area; }
 		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _bl.Blend(_back.At(index), _source.At(index)); }
 		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _bl.Blend(_back[index], _source[index]); }
 	private:
 		[[nodiscard]] constexpr static DisplayRectangle SolveArea(const DisplayRectangle& l, const DisplayRectangle& r)
 		{
-			return DisplayRectangle::FromEdge(std::max(l.Left(), r.Left()), std::min(l.Right(), r.Right()), std::max(l.Top(), r.Top()), std::min(l.Bottom(), r.Bottom()));
+			return DisplayRectangle::from_edge(std::max(l.left(), r.left()), std::min(l.right(), r.right()), std::max(l.top(), r.top()), std::min(l.bottom(), r.bottom()));
 		}
 	};
 

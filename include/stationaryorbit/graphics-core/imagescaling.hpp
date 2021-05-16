@@ -65,7 +65,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		///	ソースとなる画像。
 		///	@param	args
 		///	この画像操作を行うために渡す引数。
-		ImageScaling(const Image<Tcolor>& source, const ArgsType& args) : _data(source), args(args), _newarea(DisplayRectangle::FromEdge(int(source.Area().Left() * args.Amount().width()), int(source.Area().Right() * args.Amount().width()), int(source.Area().Top() * args.Amount().height()), int(source.Area().Bottom() * args.Amount().height()))) {}
+		ImageScaling(const Image<Tcolor>& source, const ArgsType& args) : _data(source), args(args), _newarea(DisplayRectangle::from_edge(int(source.Area().left() * args.Amount().width()), int(source.Area().right() * args.Amount().width()), int(source.Area().top() * args.Amount().height()), int(source.Area().bottom() * args.Amount().height()))) {}
 		///	オブジェクトを指定してこのオブジェクトを構築します。
 		///	@param	source
 		///	ソースとなる画像。
@@ -87,7 +87,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] bool IsReadableAbyss() const noexcept { return _data.IsReadableAbyss(); }
 
-		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _newarea.Size(); }
+		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _newarea.size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return _newarea; }
 		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return args.Method()(_data, DisplayPointF(index.x() / args.Amount().width(), index.y() / args.Amount().height())); }
 

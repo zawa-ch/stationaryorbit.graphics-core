@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/imagecropping
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -69,11 +69,11 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] bool IsReadableAbyss() const noexcept { return false; }
 
-		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return args.Area().Size(); }
+		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return args.Area().size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return args.Area(); }
-		[[nodiscard]] ValueType At(const DisplayPoint& index) const { if (args.Area().Contains(index)) { return _data.At(index); } else { throw std::out_of_range("指定されたインデックスは境界を超えています。"); } }
+		[[nodiscard]] ValueType At(const DisplayPoint& index) const { if (args.Area().contains(index)) { return _data.At(index); } else { throw std::out_of_range("指定されたインデックスは境界を超えています。"); } }
 
-		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { if (args.Area().Contains(index)) { return _data[index]; } else { throw std::out_of_range("指定されたインデックスは境界を超えています。"); } }
+		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { if (args.Area().contains(index)) { return _data[index]; } else { throw std::out_of_range("指定されたインデックスは境界を超えています。"); } }
 	};
 
 	extern template class ImageCropping<CMY8_t>;

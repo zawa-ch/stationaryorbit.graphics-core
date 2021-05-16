@@ -47,7 +47,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		///	ソースとなる画像。
 		///	@param	args
 		///	この画像操作を行うために渡す引数。
-		ImageRightTurn(const Image<Tcolor>& source, const ArgsType& args) : _data(source), _area(DisplayRectangle::FromEdge(-source.Area().Bottom() + 1, -source.Area().Top() + 1, source.Area().Left(), source.Area().Right())) {}
+		ImageRightTurn(const Image<Tcolor>& source, const ArgsType& args) : _data(source), _area(DisplayRectangle::from_edge(-source.Area().bottom() + 1, -source.Area().top() + 1, source.Area().left(), source.Area().right())) {}
 		///	オブジェクトを指定してこのオブジェクトを構築します。
 		///	@param	source
 		///	ソースとなる画像。
@@ -55,7 +55,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] bool IsReadableAbyss() const noexcept { return _data.IsReadableAbyss(); }
 
-		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.Size(); }
+		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return _area; }
 		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(index.y(), -index.x())); }
 
@@ -81,7 +81,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		///	ソースとなる画像。
 		///	@param	args
 		///	この画像操作を行うために渡す引数。
-		ImageLeftTurn(const Image<Tcolor>& source, const ArgsType& args) : _data(source), _area(DisplayRectangle::FromEdge(source.Area().Top(), source.Area().Bottom(), -source.Area().Right() + 1, -source.Area().Left() + 1)) {}
+		ImageLeftTurn(const Image<Tcolor>& source, const ArgsType& args) : _data(source), _area(DisplayRectangle::from_edge(source.Area().top(), source.Area().bottom(), -source.Area().right() + 1, -source.Area().left() + 1)) {}
 		///	オブジェクトを指定してこのオブジェクトを構築します。
 		///	@param	source
 		///	ソースとなる画像。
@@ -89,7 +89,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] bool IsReadableAbyss() const noexcept { return _data.IsReadableAbyss(); }
 
-		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.Size(); }
+		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return _area; }
 		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(-index.y(), index.x())); }
 
@@ -115,7 +115,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		///	ソースとなる画像。
 		///	@param	args
 		///	この画像操作を行うために渡す引数。
-		ImageInvertTurn(const Image<Tcolor>& source, const ArgsType& args) : _data(source), _area(DisplayRectangle::FromEdge(-source.Area().Right() + 1, -source.Area().Left() + 1, -source.Area().Bottom() + 1, -source.Area().Top() + 1)) {}
+		ImageInvertTurn(const Image<Tcolor>& source, const ArgsType& args) : _data(source), _area(DisplayRectangle::from_edge(-source.Area().right() + 1, -source.Area().left() + 1, -source.Area().bottom() + 1, -source.Area().top() + 1)) {}
 		///	オブジェクトを指定してこのオブジェクトを構築します。
 		///	@param	source
 		///	ソースとなる画像。
@@ -123,7 +123,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] bool IsReadableAbyss() const noexcept { return _data.IsReadableAbyss(); }
 
-		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.Size(); }
+		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return _area; }
 		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(-index.x(), -index.y())); }
 

@@ -43,11 +43,11 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		Pixmap() = default;
 		explicit Pixmap(const DisplayRectSize& size) : _size(size), _data(solveItemcount(size)) {}
 		Pixmap(const int& width, const int& height) : Pixmap(DisplayRectSize(width, height)) {}
-		Pixmap(const Pixmap<Tcolor, Allocator>& source, const DisplayRectangle& area) : Pixmap(area.Size())
+		Pixmap(const Pixmap<Tcolor, Allocator>& source, const DisplayRectangle& area) : Pixmap(area.size())
 		{
-			for(auto y: area.YRange().GetStdIterator()) for(auto x: area.XRange().GetStdIterator())
+			for(auto y: area.range_y().GetStdIterator()) for(auto x: area.range_x().GetStdIterator())
 			{
-				(*this)[DisplayPoint(x-area.Left(), y-area.Top())] = source[DisplayPoint(x, y)];
+				(*this)[DisplayPoint(x-area.left(), y-area.top())] = source[DisplayPoint(x, y)];
 			}
 		}
 		template<class fromTcolor, class fromAllocator>
@@ -65,11 +65,11 @@ namespace zawa_ch::StationaryOrbit::Graphics
 			}
 		}
 		template<class fromTcolor>
-		Pixmap(const Image<fromTcolor>& source, const DisplayRectangle& area) : Pixmap(area.Size())
+		Pixmap(const Image<fromTcolor>& source, const DisplayRectangle& area) : Pixmap(area.size())
 		{
-			for(auto y: area.YRange().GetStdIterator()) for(auto x: area.XRange().GetStdIterator())
+			for(auto y: area.range_y().GetStdIterator()) for(auto x: area.range_x().GetStdIterator())
 			{
-				(*this)[DisplayPoint(x-area.Left(), y-area.Top())] = ValueType(source[DisplayPoint(x, y)]);
+				(*this)[DisplayPoint(x-area.left(), y-area.top())] = ValueType(source[DisplayPoint(x, y)]);
 			}
 		}
 		virtual ~Pixmap() = default;
@@ -89,13 +89,13 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		template<class fromTcolor = Tcolor>
 		void Copy(const Image<fromTcolor>& source, const DisplayRectangle& area, const DisplayPoint& destination = DisplayPoint(Zero, Zero))
 		{
-			if ((area.Left() < source.Area().Left())||(area.Top() < source.Area().Top())||(source.Area().Right() < area.Right())||(source.Area().Bottom() < area.Bottom()))
+			if ((area.left() < source.Area().left())||(area.top() < source.Area().top())||(source.Area().right() < area.right())||(source.Area().bottom() < area.bottom()))
 			{ throw std::invalid_argument("コピー指定された領域はコピー元の境界を超えています。"); }
-			auto destarea = DisplayRectangle(destination, area.Size());
-			for(auto y: area.Size().range_y().GetStdIterator()) for(auto x: area.Size().range_x().GetStdIterator())
+			auto destarea = DisplayRectangle(destination, area.size());
+			for(auto y: area.size().range_y().GetStdIterator()) for(auto x: area.size().range_x().GetStdIterator())
 			{
 				auto p = DisplayPoint(x, y);
-				(*this)[p + destination] = ValueType(source[p + area.Origin()]);
+				(*this)[p + destination] = ValueType(source[p + area.origin()]);
 			}
 		}
 
