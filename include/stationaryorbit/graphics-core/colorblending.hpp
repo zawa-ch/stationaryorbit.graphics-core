@@ -211,7 +211,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 				auto c3 = c2 * cb;
 				return c3 + c3 + c3 + c3;
 			}(backdrop);
-			ChannelValue<Tp> D2 = ChannelValue<Tp>(BasicMathematics::Sqrt(backdrop.Data()));
+			ChannelValue<Tp> D2 = ChannelValue<Tp>(BasicMathematics::square_root(backdrop.Data()));
 			ChannelValue<Tp> D = ((backdrop <= ChannelValue<Tp>(Tp(0.25)))?(D1):(D2));
 			ChannelValue<Tp> C1 = backdrop - ((~source) - source) * backdrop * (~backdrop);
 			ChannelValue<Tp> C2 = backdrop + ((source - ChannelValue<Tp>(Tp(0.5))) + (source - ChannelValue<Tp>(Tp(0.5)))) * (D - backdrop);
