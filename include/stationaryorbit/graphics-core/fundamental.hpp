@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/fundamental
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -23,9 +23,9 @@ namespace zawa_ch::StationaryOrbit::Graphics
 {
 	typedef Rect2DSize<intmax_t> DisplayRectSize;
 	typedef Rect2DSize<float> DisplayRectSizeF;
-	typedef Point2D<intmax_t, Quadrants::DownRight> DisplayPoint;
-	typedef Point2D<float, Quadrants::DownRight> DisplayPointF;
-	typedef Rectangle2D<intmax_t, Quadrants::DownRight> DisplayRectangle;
-	typedef Rectangle2D<float, Quadrants::DownRight> DisplayRectangleF;
+	typedef Point2D<intmax_t, Quadrants2D::DownRight> DisplayPoint;
+	typedef Point2D<float, Quadrants2D::DownRight> DisplayPointF;
+	typedef Rectangle2D<intmax_t, Quadrants2D::DownRight> DisplayRectangle;
+	typedef Rectangle2D<float, Quadrants2D::DownRight> DisplayRectangleF;
 }
 #endif // __stationaryorbit_graphics_core_fundamental__

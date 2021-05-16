@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/imageflip
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -57,9 +57,9 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _data.Size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return DisplayRectangle(_orig, _data.Size()); }
-		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(-index.X(), index.Y())); }
+		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(-index.x(), index.y())); }
 
-		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[DisplayPoint(-index.X(), index.Y())]; }
+		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[DisplayPoint(-index.x(), index.y())]; }
 	};
 	///	画像を上下反転します。
 	///	@param	Tcolor
@@ -91,9 +91,9 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _data.Size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return DisplayRectangle(_orig, _data.Size()); }
-		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(index.X(), -index.Y())); }
+		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(index.x(), -index.y())); }
 
-		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[DisplayPoint(index.X(), -index.Y())]; }
+		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[DisplayPoint(index.x(), -index.y())]; }
 	};
 
 	extern template class ImageHorizonalFlip<CMY8_t>;

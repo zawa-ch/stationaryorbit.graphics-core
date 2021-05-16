@@ -97,8 +97,8 @@ namespace zawa_ch::StationaryOrbit::Graphics
 	private:
 		size_t solveindex(const DisplayPoint& point) const
 		{
-			if ((point.X() < 0)||(point.Y() < 0)||(_size.width() <= point.X())||(_size.height() <= point.Y())) { throw std::out_of_range("指定されたインデックスは境界を超えています。"); }
-			return (point.Y() * _size.width()) + point.X();
+			if ((point.x() < 0)||(point.y() < 0)||(_size.width() <= point.x())||(_size.height() <= point.y())) { throw std::out_of_range("指定されたインデックスは境界を超えています。"); }
+			return (point.y() * _size.width()) + point.x();
 		}
 	};
 }

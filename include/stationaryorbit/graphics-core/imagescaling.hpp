@@ -89,9 +89,9 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _newarea.Size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return _newarea; }
-		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return args.Method()(_data, DisplayPointF(index.X() / args.Amount().width(), index.Y() / args.Amount().height())); }
+		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return args.Method()(_data, DisplayPointF(index.x() / args.Amount().width(), index.y() / args.Amount().height())); }
 
-		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return args.Method()(_data, DisplayPointF(index.X() / args.Amount().width(), index.Y() / args.Amount().height())); }
+		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return args.Method()(_data, DisplayPointF(index.x() / args.Amount().width(), index.y() / args.Amount().height())); }
 	};
 
 	extern template class ImageScaling<CMY8_t>;

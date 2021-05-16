@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/imageturn
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -57,9 +57,9 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.Size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return _area; }
-		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(index.Y(), -index.X())); }
+		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(index.y(), -index.x())); }
 
-		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[DisplayPoint(index.Y(), -index.X())]; }
+		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[DisplayPoint(index.y(), -index.x())]; }
 	};
 	///	画像を左方向に90°回転します。
 	///	@param	Tcolor
@@ -91,9 +91,9 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.Size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return _area; }
-		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(-index.Y(), index.X())); }
+		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(-index.y(), index.x())); }
 
-		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[DisplayPoint(-index.Y(), index.X())]; }
+		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[DisplayPoint(-index.y(), index.x())]; }
 	};
 	///	画像を180°回転します。
 	///	@param	Tcolor
@@ -125,9 +125,9 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _area.Size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return _area; }
-		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(-index.X(), -index.Y())); }
+		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint(-index.x(), -index.y())); }
 
-		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[DisplayPoint(-index.X(), -index.Y())]; }
+		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return _data[DisplayPoint(-index.x(), -index.y())]; }
 	};
 
 	extern template class ImageRightTurn<CMY8_t>;

@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/interpolation
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -36,32 +36,32 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		template<class Tcolor>
 		static Tcolor NearestNeighbor(const Image<Tcolor>& image, const DisplayPointF& pos)
 		{
-			return image[pos.Round()];
+			return image[pos.round()];
 		}
 		template<class Tcolor, std::enable_if_t<ColorTraits::IsColorType<Tcolor> && !ColorTraits::IsTranslucentColorType<Tcolor>, int> = 0>
 		static Tcolor Bilinear(const Image<Tcolor>& image, const DisplayPointF& pos)
 		{
 			typedef typename Tcolor::ValueType::ValueType ChannelType;
 			static_assert(ColorTraits::IsColorType<Tcolor>, "指定する型は ColorTraits::IsColorType の要件を満たす必要があります。");
-			if (pos == DisplayPointF(pos.Floor())) { return image[pos.Floor()]; }
-			auto buffer = PixArray<Tcolor, 2, 2>(image, pos.Floor());
-			auto fpos = pos.Extract();
-			auto pxup = (buffer.At(DisplayPoint(0, 0)) * ChannelType(1 - fpos.X()) + buffer.At(DisplayPoint(1, 0)) * ChannelType(fpos.X()));
-			auto pxdown = (buffer.At(DisplayPoint(0, 1)) * ChannelType(1 - fpos.X()) + buffer.At(DisplayPoint(1, 1)) * ChannelType(fpos.X()));
-			return (pxup * ChannelType(1 - fpos.Y()) + pxdown * ChannelType(fpos.Y()));
+			if (pos == DisplayPointF(pos.floor())) { return image[pos.floor()]; }
+			auto buffer = PixArray<Tcolor, 2, 2>(image, pos.floor());
+			auto fpos = pos.extract();
+			auto pxup = (buffer.At(DisplayPoint(0, 0)) * ChannelType(1 - fpos.x()) + buffer.At(DisplayPoint(1, 0)) * ChannelType(fpos.x()));
+			auto pxdown = (buffer.At(DisplayPoint(0, 1)) * ChannelType(1 - fpos.x()) + buffer.At(DisplayPoint(1, 1)) * ChannelType(fpos.x()));
+			return (pxup * ChannelType(1 - fpos.y()) + pxdown * ChannelType(fpos.y()));
 		}
 		template<class Tcolor, std::enable_if_t<ColorTraits::IsTranslucentColorType<Tcolor>, int> = 0>
 		static Tcolor Bilinear(const Image<Tcolor>& image, const DisplayPointF& pos)
 		{
 			typedef typename Tcolor::ValueType::ValueType ChannelType;
-			if (pos == DisplayPointF(pos.Floor())) { return image[pos.Floor()]; }
-			auto buffer = PixArray<Tcolor, 2, 2>(image, pos.Floor());
-			auto fpos = pos.Extract();
-			auto apxup = (buffer.At(DisplayPoint(0, 0)).Alpha() * typename Tcolor::OpacityType(ChannelType(1 - fpos.X())) + buffer.At(DisplayPoint(1, 0)).Alpha() * typename Tcolor::OpacityType(ChannelType(fpos.X())));
-			auto cpxup = (buffer.At(DisplayPoint(0, 0)).Color() * ChannelType(1 - fpos.X()) + buffer.At(DisplayPoint(1, 0)).Color() * ChannelType(fpos.X()));
-			auto apxdown = (buffer.At(DisplayPoint(0, 1)).Alpha() * typename Tcolor::OpacityType(ChannelType(1 - fpos.X())) + buffer.At(DisplayPoint(1, 1)).Alpha() * typename Tcolor::OpacityType(ChannelType(fpos.X())));
-			auto cpxdown = (buffer.At(DisplayPoint(0, 1)).Color() * ChannelType(1 - fpos.X()) + buffer.At(DisplayPoint(1, 1)).Color() * ChannelType(fpos.X()));
-			return Tcolor(cpxup * ChannelType(1 - fpos.Y()) + cpxdown * ChannelType(fpos.Y()), apxup * typename Tcolor::OpacityType(ChannelType(1 - fpos.Y())) + apxdown * typename Tcolor::OpacityType(ChannelType(fpos.Y())));
+			if (pos == DisplayPointF(pos.floor())) { return image[pos.floor()]; }
+			auto buffer = PixArray<Tcolor, 2, 2>(image, pos.floor());
+			auto fpos = pos.extract();
+			auto apxup = (buffer.At(DisplayPoint(0, 0)).Alpha() * typename Tcolor::OpacityType(ChannelType(1 - fpos.x())) + buffer.At(DisplayPoint(1, 0)).Alpha() * typename Tcolor::OpacityType(ChannelType(fpos.x())));
+			auto cpxup = (buffer.At(DisplayPoint(0, 0)).Color() * ChannelType(1 - fpos.x()) + buffer.At(DisplayPoint(1, 0)).Color() * ChannelType(fpos.x()));
+			auto apxdown = (buffer.At(DisplayPoint(0, 1)).Alpha() * typename Tcolor::OpacityType(ChannelType(1 - fpos.x())) + buffer.At(DisplayPoint(1, 1)).Alpha() * typename Tcolor::OpacityType(ChannelType(fpos.x())));
+			auto cpxdown = (buffer.At(DisplayPoint(0, 1)).Color() * ChannelType(1 - fpos.x()) + buffer.At(DisplayPoint(1, 1)).Color() * ChannelType(fpos.x()));
+			return Tcolor(cpxup * ChannelType(1 - fpos.y()) + cpxdown * ChannelType(fpos.y()), apxup * typename Tcolor::OpacityType(ChannelType(1 - fpos.y())) + apxdown * typename Tcolor::OpacityType(ChannelType(fpos.y())));
 		}
 	};
 
