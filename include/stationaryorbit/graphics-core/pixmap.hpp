@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/pixmap
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -92,7 +92,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 			if ((area.Left() < source.Area().Left())||(area.Top() < source.Area().Top())||(source.Area().Right() < area.Right())||(source.Area().Bottom() < area.Bottom()))
 			{ throw std::invalid_argument("コピー指定された領域はコピー元の境界を超えています。"); }
 			auto destarea = DisplayRectangle(destination, area.Size());
-			for(auto y: area.Size().YRange().GetStdIterator()) for(auto x: area.Size().XRange().GetStdIterator())
+			for(auto y: area.Size().range_y().GetStdIterator()) for(auto x: area.Size().range_x().GetStdIterator())
 			{
 				auto p = DisplayPoint(x, y);
 				(*this)[p + destination] = ValueType(source[p + area.Origin()]);
@@ -119,13 +119,13 @@ namespace zawa_ch::StationaryOrbit::Graphics
 	private:
 		size_t solveindex(const DisplayPoint& point) const
 		{
-			if ((point.X() < 0)||(point.Y() < 0)||(_size.Width() <= point.X())||(_size.Height() <= point.Y())) { throw std::out_of_range("指定されたインデックスは境界を超えています。"); }
-			return (point.Y() * _size.Width()) + point.X();
+			if ((point.X() < 0)||(point.Y() < 0)||(_size.width() <= point.X())||(_size.height() <= point.Y())) { throw std::out_of_range("指定されたインデックスは境界を超えています。"); }
+			return (point.Y() * _size.width()) + point.X();
 		}
 		static size_t solveItemcount(const DisplayRectSize& size)
 		{
-			if ((size.Height() < 0)||(size.Width() < 0)) { throw std::invalid_argument("sizeの値が無効です。"); }
-			return size_t(size.Height()) * size_t(size.Width());
+			if ((size.height() < 0)||(size.width() < 0)) { throw std::invalid_argument("sizeの値が無効です。"); }
+			return size_t(size.height()) * size_t(size.width());
 		}
 	};
 

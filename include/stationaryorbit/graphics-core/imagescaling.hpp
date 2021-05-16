@@ -1,5 +1,5 @@
 //	stationaryorbit/graphics-core/imagescaling
-//	Copyright 2020 zawa-ch.
+//	Copyright 2020-2021 zawa-ch.
 //	GPLv3 (or later) license
 //
 //	This program is free software: you can redistribute it and/or modify
@@ -65,7 +65,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		///	ソースとなる画像。
 		///	@param	args
 		///	この画像操作を行うために渡す引数。
-		ImageScaling(const Image<Tcolor>& source, const ArgsType& args) : _data(source), args(args), _newarea(DisplayRectangle::FromEdge(int(source.Area().Left() * args.Amount().Width()), int(source.Area().Right() * args.Amount().Width()), int(source.Area().Top() * args.Amount().Height()), int(source.Area().Bottom() * args.Amount().Height()))) {}
+		ImageScaling(const Image<Tcolor>& source, const ArgsType& args) : _data(source), args(args), _newarea(DisplayRectangle::FromEdge(int(source.Area().Left() * args.Amount().width()), int(source.Area().Right() * args.Amount().width()), int(source.Area().Top() * args.Amount().height()), int(source.Area().Bottom() * args.Amount().height()))) {}
 		///	オブジェクトを指定してこのオブジェクトを構築します。
 		///	@param	source
 		///	ソースとなる画像。
@@ -89,9 +89,9 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] const DisplayRectSize& Size() const noexcept { return _newarea.Size(); }
 		[[nodiscard]] DisplayRectangle Area() const noexcept { return _newarea; }
-		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return args.Method()(_data, DisplayPointF(index.X() / args.Amount().Width(), index.Y() / args.Amount().Height())); }
+		[[nodiscard]] ValueType At(const DisplayPoint& index) const { return args.Method()(_data, DisplayPointF(index.X() / args.Amount().width(), index.Y() / args.Amount().height())); }
 
-		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return args.Method()(_data, DisplayPointF(index.X() / args.Amount().Width(), index.Y() / args.Amount().Height())); }
+		[[nodiscard]] ValueType operator[](const DisplayPoint& index) const { return args.Method()(_data, DisplayPointF(index.X() / args.Amount().width(), index.Y() / args.Amount().height())); }
 	};
 
 	extern template class ImageScaling<CMY8_t>;
