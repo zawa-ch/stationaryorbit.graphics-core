@@ -23,6 +23,7 @@
 #include "relativecolor.hpp"
 #include "translucentcolor.hpp"
 #include "image.hpp"
+#include "stationaryorbit/core.utilities.hpp"
 namespace zawa_ch::StationaryOrbit::Graphics
 {
 	///	カラーブレンディングのアルゴリズムの実装です。
