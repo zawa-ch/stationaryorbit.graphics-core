@@ -29,7 +29,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 	template<class Tp, class = void>
 	struct ChannelValue final
 	{
-		static_assert(Traits::IsNumericalType<Tp>, "テンプレート型 Tp は Traits::IsNumericalType の要件を満たす必要があります。");
+		static_assert(NumericalTypeTraits::is_numericaltype<Tp>, "テンプレート型 Tp は NumericalTraits::IsNumericalType の要件を満たす必要があります。");
 		static_assert(std::is_constructible_v<Tp, int>, "テンプレート引数型 Tp は (int) を引数に取るコンストラクタを持つ必要があります。");
 	public:
 		///	この型の値の表現のために内部で使用されている型。
@@ -102,7 +102,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 	template<class Tp>
 	struct ChannelValue<Tp, std::enable_if_t<std::is_floating_point_v<Tp>>>
 	{
-		static_assert(Traits::IsNumericalType<Tp>, "テンプレート型 Tp は Traits::IsNumericalType の要件を満たす必要があります。");
+		static_assert(NumericalTypeTraits::is_numericaltype<Tp>, "テンプレート型 Tp は NumericalTraits::IsNumericalType の要件を満たす必要があります。");
 	public:
 		///	この型の値の表現のために内部で使用されている型。
 		typedef Tp ValueType;
