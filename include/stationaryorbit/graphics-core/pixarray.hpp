@@ -19,6 +19,7 @@
 #ifndef __stationaryorbit_graphics_core_pixarray__
 #define __stationaryorbit_graphics_core_pixarray__
 #include <array>
+#include <functional>
 #include "image.hpp"
 namespace zawa_ch::StationaryOrbit::Graphics
 {

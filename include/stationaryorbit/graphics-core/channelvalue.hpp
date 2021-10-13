@@ -18,6 +18,7 @@
 //
 #ifndef __stationaryorbit_graphics_core_channelvalue__
 #define __stationaryorbit_graphics_core_channelvalue__
+#include <algorithm>
 #include "stationaryorbit/core.traits.hpp"
 #include "stationaryorbit/core.numeral.hpp"
 namespace zawa_ch::StationaryOrbit::Graphics
