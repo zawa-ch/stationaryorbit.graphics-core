@@ -45,7 +45,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		Pixmap(const int& width, const int& height) : Pixmap(DisplayRectSize(width, height)) {}
 		Pixmap(const Pixmap<Tcolor, Allocator>& source, const DisplayRectangle& area) : Pixmap(area.size())
 		{
-			for(auto y: area.range_y().GetStdIterator()) for(auto x: area.range_x().GetStdIterator())
+			for(auto y: area.range_y().get_std_iterator()) for(auto x: area.range_x().get_std_iterator())
 			{
 				(*this)[DisplayPoint(x-area.left(), y-area.top())] = source[DisplayPoint(x, y)];
 			}
@@ -67,7 +67,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		template<class fromTcolor>
 		Pixmap(const Image<fromTcolor>& source, const DisplayRectangle& area) : Pixmap(area.size())
 		{
-			for(auto y: area.range_y().GetStdIterator()) for(auto x: area.range_x().GetStdIterator())
+			for(auto y: area.range_y().get_std_iterator()) for(auto x: area.range_x().get_std_iterator())
 			{
 				(*this)[DisplayPoint(x-area.left(), y-area.top())] = ValueType(source[DisplayPoint(x, y)]);
 			}
@@ -92,7 +92,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 			if ((area.left() < source.Area().left())||(area.top() < source.Area().top())||(source.Area().right() < area.right())||(source.Area().bottom() < area.bottom()))
 			{ throw std::invalid_argument("コピー指定された領域はコピー元の境界を超えています。"); }
 			auto destarea = DisplayRectangle(destination, area.size());
-			for(auto y: area.size().range_y().GetStdIterator()) for(auto x: area.size().range_x().GetStdIterator())
+			for(auto y: area.size().range_y().get_std_iterator()) for(auto x: area.size().range_x().get_std_iterator())
 			{
 				auto p = DisplayPoint(x, y);
 				(*this)[p + destination] = ValueType(source[p + area.origin()]);

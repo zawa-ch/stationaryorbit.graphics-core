@@ -40,7 +40,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 
 		[[nodiscard]] virtual const DisplayRectSize& Size() const noexcept { return _data.Size(); }
 		[[nodiscard]] virtual DisplayRectangle Area() const noexcept { return _data.Area(); }
-		[[nodiscard]] virtual ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint((_data.Area().range_x().isIncluded(index.x())?(index.x()):((_data.Area().range_x().isAbove(index.x()))?(_data.Area().range_x().GetCeiling() - 1):(_data.Area().range_x().GetFloor()))), (_data.Area().range_y().isIncluded(index.y())?(index.y()):((_data.Area().range_y().isAbove(index.y()))?(_data.Area().range_y().GetCeiling() - 1):(_data.Area().range_y().GetFloor()))))); }
+		[[nodiscard]] virtual ValueType At(const DisplayPoint& index) const { return _data.At(DisplayPoint((_data.Area().range_x().is_included(index.x())?(index.x()):((_data.Area().range_x().is_over_top(index.x()))?(_data.Area().range_x().top() - 1):(_data.Area().range_x().bottom()))), (_data.Area().range_y().is_included(index.y())?(index.y()):((_data.Area().range_y().is_over_top(index.y()))?(_data.Area().range_y().top() - 1):(_data.Area().range_y().bottom()))))); }
 
 		[[nodiscard]] virtual ValueType operator[](const DisplayPoint& index) const { return At(index); }
 	};
