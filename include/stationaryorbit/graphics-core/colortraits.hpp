@@ -49,7 +49,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 			: std::conjunction
 			<
 				IsColorTypeBase_t<T>,
-				std::bool_constant<Traits::IsArithmeticType<T>>,
+				std::bool_constant<ArithmeticTypeTraits::is_arithmetictype<T>>,
 				std::true_type
 			>
 		{};
