@@ -57,12 +57,12 @@ zawa_ch::StationaryOrbit::Graphics::ChannelValue<double>;
 // - デストラクタを持つ
 // - デストラクタがnoexceptである
 // - デストラクタがtrivialである
-static_assert(zawa_ch::StationaryOrbit::Traits::IsValueType<zawa_ch::StationaryOrbit::Graphics::Channel8_t>);
-static_assert(zawa_ch::StationaryOrbit::Traits::IsValueType<zawa_ch::StationaryOrbit::Graphics::Channel16_t>);
-static_assert(zawa_ch::StationaryOrbit::Traits::IsValueType<zawa_ch::StationaryOrbit::Graphics::Channel32_t>);
-static_assert(zawa_ch::StationaryOrbit::Traits::IsValueType<zawa_ch::StationaryOrbit::Graphics::Channel64_t>);
-static_assert(zawa_ch::StationaryOrbit::Traits::IsValueType<zawa_ch::StationaryOrbit::Graphics::ChannelI16_t>);
-static_assert(zawa_ch::StationaryOrbit::Traits::IsValueType<zawa_ch::StationaryOrbit::Graphics::ChannelI32_t>);
-static_assert(zawa_ch::StationaryOrbit::Traits::IsValueType<zawa_ch::StationaryOrbit::Graphics::ChannelI64_t>);
-static_assert(zawa_ch::StationaryOrbit::Traits::IsValueType<zawa_ch::StationaryOrbit::Graphics::ChannelF32_t>);
-static_assert(zawa_ch::StationaryOrbit::Traits::IsValueType<zawa_ch::StationaryOrbit::Graphics::ChannelF64_t>);
+static_assert(zawa_ch::StationaryOrbit::ValueTypeTraits::is_valuetype<zawa_ch::StationaryOrbit::Graphics::Channel8_t>);
+static_assert(zawa_ch::StationaryOrbit::ValueTypeTraits::is_valuetype<zawa_ch::StationaryOrbit::Graphics::Channel16_t>);
+static_assert(zawa_ch::StationaryOrbit::ValueTypeTraits::is_valuetype<zawa_ch::StationaryOrbit::Graphics::Channel32_t>);
+static_assert(zawa_ch::StationaryOrbit::ValueTypeTraits::is_valuetype<zawa_ch::StationaryOrbit::Graphics::Channel64_t>);
+static_assert(zawa_ch::StationaryOrbit::ValueTypeTraits::is_valuetype<zawa_ch::StationaryOrbit::Graphics::ChannelI16_t>);
+static_assert(zawa_ch::StationaryOrbit::ValueTypeTraits::is_valuetype<zawa_ch::StationaryOrbit::Graphics::ChannelI32_t>);
+static_assert(zawa_ch::StationaryOrbit::ValueTypeTraits::is_valuetype<zawa_ch::StationaryOrbit::Graphics::ChannelI64_t>);
+static_assert(zawa_ch::StationaryOrbit::ValueTypeTraits::is_valuetype<zawa_ch::StationaryOrbit::Graphics::ChannelF32_t>);
+static_assert(zawa_ch::StationaryOrbit::ValueTypeTraits::is_valuetype<zawa_ch::StationaryOrbit::Graphics::ChannelF64_t>);

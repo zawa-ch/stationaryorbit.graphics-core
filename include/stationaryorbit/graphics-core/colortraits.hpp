@@ -37,7 +37,7 @@ namespace zawa_ch::StationaryOrbit::Graphics
 		struct IsColorTypeBase_t<T, std::void_t< typename T::ValueType >>
 			: std::conjunction
 			<
-				std::bool_constant<Traits::IsValueType<T>>,
+				std::bool_constant<ValueTypeTraits::is_valuetype<T>>,
 				std::true_type
 			>
 		{};
